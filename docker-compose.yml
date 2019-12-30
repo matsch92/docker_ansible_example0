@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  ans_master_service:
+    hostname: 'ans_master0'
+    container_name: ans_master
+    stdin_open: true
+    tty: true
+    image: ubuntu:14.04
+  ans_slave_service0:
+    container_name: ans_slave0
+    hostname: 'ans_slave0'
+    stdin_open: true
+    tty: true
+    image: ubuntu:14.04
+  ans_slave_service1:
+    container_name: ans_slave1
+    hostname: 'ans_slave1'
+    stdin_open: true
+    tty: true
+    image: ubuntu:14.04
