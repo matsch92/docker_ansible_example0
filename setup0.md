@@ -1,19 +1,20 @@
-#Ansible_Notes
+# Ansible_Notes
 
-##Links
+## Links
 
 [Installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
+
 [Getting Started](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html)
 
-##Description
+## Description
 
 I will be using a blank Ubuntu 14.04 docker image locally as a test machine to install, setup, and test Ansible.  I will be bringing up 1 master docker container and multiple other slave containers that I will use to have Ansible work on them.  I will also be working on a Dockerfile that skips through the setup/configuration process in case you want to skip that and just test out Ansible scripts.
 
-##Bring up the Docker Containers (master and slaves) -
+## Bring up the Docker Containers (master and slaves) -
 
     docker-compose -p ans_project up -d
 
-##Configure master Container - 
+## Configure master Container - 
 
 Attach to ans_master:
 
@@ -50,7 +51,7 @@ Copy your id_rsa.pub:
 
     cat ~/.ssh/id_rsa.pub
 
-##Configuring ans_slaves - 
+## Configuring ans_slaves - 
 
 The steps listed here will have to be done on both slaves.
 
@@ -71,7 +72,7 @@ Install and Configure SSH:
 Paste in the `id_rsa.pub` copied from `ans_master0`.
 From your master container you should now be able to run `ssh ans_slaveX` and connect with no password prompt.
 
-##Verify Ansible Connections -
+## Verify Ansible Connections -
 
 Run the following commands to verify your setup:
 
