@@ -1,4 +1,4 @@
-# Ansible_Notes
+# Intial Setup
 
 ## Links
 
@@ -39,6 +39,7 @@ Create an Inventory (edit /etc/ansible/hosts):
 
 Add the following to `hosts`:
 
+    [tomcat-servers]
     ans_slave0
     ans_slave1
 

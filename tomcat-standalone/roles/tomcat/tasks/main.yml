@@ -1,0 +1,12 @@
+---
+- name: Include Variables
+  include_vars: "tomcat-servers"
+
+- name: Download Tomcat 8.5.16
+  get_url: url={{ tar_url }} dest=~/tomcat.tar.gz validate_certs=no
+
+- name: Extract Tomcat
+  command: chdir=~ tar zxf tomcat.tar.gz creates=~/apache-tomcat-8.5.16
+
+- name: Create SymLink
+  file: src=~/apache-tomcat-8.5.16 path=~/tomcat state=link
