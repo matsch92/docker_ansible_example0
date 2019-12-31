@@ -10,3 +10,14 @@
 
 - name: Create SymLink
   file: src=~/apache-tomcat-8.5.16 path=~/tomcat state=link
+
+- name: Configure Tomcat Server
+  template: src=server.xml dest=~/tomcat/conf/
+  notify: restart tomcat
+
+- name: Configure Tomcat Users
+  template: src=tomcat-users.xml dest=~/tomcat/conf
+  notify: restart tomcat
+
+- name: Start Tomcat
+  service: name=tomcat state=started enabled=yes
