@@ -9,8 +9,8 @@ For this tutorial I'm expecting that you have some beginner to moderate Docker a
 ## Expected Outcome
 
 At the end of this tutorial you should have:
-	- Ansible setup/Installtion
-	- Playbook creation and usage
-	- Environment with Docker Images for future testing
+- Ansible setup/Installtion
+- Playbook creation and usage
+- Environment with Docker Images for future testing
 
 This tutorial does contain a specific Tomcat example, however once completed you will have the basic `master -> slave` structure setup with Docker.  So this project can also be a quick and dirty starting point for other Ansible projects that you may need to test out.
