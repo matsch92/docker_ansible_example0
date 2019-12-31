@@ -2,17 +2,19 @@
 
 ## Links
 
-[Installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
+[Ansible Installation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
 
-[Getting Started](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html)
+[Ansible Getting Started](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html)
 
 ## Description
 
-I will be using a blank Ubuntu 14.04 docker image locally as a test machine to install, setup, and test Ansible.  I will be bringing up 1 master docker container and multiple other slave containers that I will use to have Ansible work on them.  I will also be working on a Dockerfile that skips through the setup/configuration process in case you want to skip that and just test out Ansible scripts.
+We will be using a blank Ubuntu 14.04 docker image locally as a test machine to install, setup, and test Ansible.  We will be bringing up 1 master docker container and multiple other slave containers (2 for now) that we will use to have Ansible work on them.  We will also be working on a Dockerfile that skips through the setup/configuration process in case you want to skip that and just test out Ansible scripts.
 
 ## Bring up the Docker Containers (master and slaves) -
 
     docker-compose -p ans_project up -d
+
+If you run into errors on this step make sure you have the `ubuntu:14.04` Docker images pulled, and no other containers are conflicting.
 
 ## Configure master Container - 
 
@@ -31,11 +33,13 @@ Ansible Install:
     apt-add-repository --yes ppa:ansible/ansible
     apt install ansible
 
-Create an Inventory (edit /etc/ansible/hosts):
+**(Optional)** Create an Inventory (edit `/etc/ansible/hosts`):
 
     apt-get install nano
     cd /etc/ansible
     nano hosts
+
+This step is optional, because you could just use the `hosts` file I provided located: `tomcat-standalone/hosts` and point to that in later steps.
 
 Add the following to `hosts`:
 
@@ -48,13 +52,17 @@ Setup your SSH Keys:
     cd ~
     ssh-keygen -t rsa
 
+Just keep clicking `Enter` through this, it should put the files in `~/.ssh` and you wont need a password.
+
 Copy your id_rsa.pub:
 
     cat ~/.ssh/id_rsa.pub
 
+We'll use this public key in the next steps here.
+
 ## Configuring ans_slaves - 
 
-The steps listed here will have to be done on both slaves.
+The steps listed here will have to be done on **both** slaves.
 
 Install and Configure SSH:
 
@@ -75,8 +83,10 @@ From your master container you should now be able to run `ssh ans_slaveX` and co
 
 ## Verify Ansible Connections -
 
-Run the following commands to verify your setup:
+Run the following commands **from the master container** to verify your setup:
 
     ansible all -m ping
 
     ansible all -a "/bin/echo hello"
+
+You should see a successful response from both slaves (`ans_slave0` and `ans_slave1`)
