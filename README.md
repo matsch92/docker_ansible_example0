@@ -6,6 +6,10 @@ This tutorial is structured for running a few Docker containers using `docker-co
 
 For this tutorial I'm expecting that you have some beginner to moderate Docker and Linux knowledge. If not this might be a good place to gain some experience with those as well.
 
+## Get Started!
+
+Go into `tutorial_doc` and start at `setup0.md` to get rolling.
+
 ## Expected Outcome
 
 At the end of this tutorial you should have:
