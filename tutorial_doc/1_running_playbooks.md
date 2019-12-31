@@ -2,19 +2,19 @@
 
 ## Links
 
-[Root of the Playbook Documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html#working-with-playbooks)
+**Some important ones:**
 
-Some important ones:
+- [Root of the Playbook Documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html#working-with-playbooks)
 
-[Introduction](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html)
+- [Introduction](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html)
 
-[Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
+- [Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
 
-[Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)
+- [Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)
 
-Offical Ansible Example:
+**Offical Ansible Example:**
 
-[Offical Ansible Tomcat Example](https://github.com/ansible/ansible-examples/tree/master/tomcat-standalone)
+- [Offical Ansible Tomcat Example](https://github.com/ansible/ansible-examples/tree/master/tomcat-standalone)
 
 ## Description
 
@@ -31,7 +31,7 @@ So now that we've finished `0_setup.md` you should have 3 containers running and
 
 I've purposefully put the `tomcat-standalone/roles/tomcat/vars/tomcat-servers` file in the `.gitignore` because our variables may be different.  You will need to edit these variables in order for your playbook to run successfully.
 
-Variables to edit:
+**Variables to edit:**
 - **tar_url**: change this to your tomcat version url
 
 ## Copy the Tomcat Playbook into our master container
@@ -48,7 +48,7 @@ Go into your master container and run the playbook:
 	cd ~/tomcat-standalone
 	ansible-playbook -i hosts site.yml
 
-Parameters:
+**Parameters:**
 - **-i hosts**: selects the hosts file in your current directory, if you didn't use this it would select Ansible's default hosts file in `/etc/ansible/hosts` 
 - **site.yaml**: this selects our playbok to run which goes through our directory structure, finds the `tomcat` role and runs the tasks under that role
 
