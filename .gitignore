@@ -1,1 +1,1 @@
-tomcat-standalone/roles/tomcat/vars/tomcat-servers
+tomcat-standalone/roles/tomcat/vars/*
