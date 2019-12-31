@@ -8,7 +8,7 @@ For this tutorial I'm expecting that you have some beginner to moderate Docker a
 
 ## Get Started!
 
-Go into `tutorial_doc` and start at `setup0.md` to get rolling.
+Go into `tutorial_doc` and start at `0_setup.md` to get rolling.
 
 ## Expected Outcome
 
