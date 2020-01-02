@@ -12,10 +12,16 @@ services:
     hostname: 'ans_slave0'
     stdin_open: true
     tty: true
-    image: ubuntu:14.04
+    image: ibmjava:8-jre
   ans_slave_service1:
     container_name: ans_slave1
     hostname: 'ans_slave1'
     stdin_open: true
     tty: true
-    image: ubuntu:14.04
+    image: ibmjava:8-jre
+  ans_slave_service2:
+    container_name: ans_slave2
+    hostname: 'ans_slave2'
+    stdin_open: true
+    tty: true
+    image: ibmjava:8-jre

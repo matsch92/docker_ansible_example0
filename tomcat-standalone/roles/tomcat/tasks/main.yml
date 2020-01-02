@@ -3,10 +3,11 @@
   include_vars: "tomcat-servers"
 
 - name: Download Tomcat 8.5.16
-  get_url: url={{ tar_url }} dest=~/tomcat.tar.gz validate_certs=no
+  #get_url: url={{ tar_url }} dest=~/tomcat.tar.gz validate_certs=no
+  shell: wget --no-check-certificate {{ tar_url }}
 
 - name: Extract Tomcat
-  command: chdir=~ tar zxf tomcat.tar.gz creates=~/apache-tomcat-8.5.16
+  command: chdir=~ tar zxf apache-tomcat-8.5.16.tar.gz creates=~/apache-tomcat-8.5.16
 
 - name: Create SymLink
   file: src=~/apache-tomcat-8.5.16 path=~/tomcat state=link
@@ -16,8 +17,16 @@
   notify: restart tomcat
 
 - name: Configure Tomcat Users
-  template: src=tomcat-users.xml dest=~/tomcat/conf
+  template: src=tomcat-users.xml dest=~/tomcat/conf/
   notify: restart tomcat
+
+- name: Configure web app
+  template: src=web.xml dest=~/tomcat/conf/
+  notify: restart tomcat
+
+- name: Install Tomcat init script
+  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
+  #shell: ~/tomcat/bin/catalina.sh start

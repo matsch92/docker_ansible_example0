@@ -8,7 +8,7 @@
 
 ## Description
 
-We will be using a blank Ubuntu 14.04 docker image locally as a test machine to install, setup, and test Ansible.  We will be bringing up 1 master docker container and multiple other slave containers (2 for now) that we will use to have Ansible work on them.  We will also be working on a Dockerfile that skips through the setup/configuration process in case you want to skip that and just test out Ansible scripts.
+We will be using a `ubuntu:14.04` image for the Ansible master and IBM's `ibmjava:8-jre` docker image for the slave containers.  The purpose if this environment is to have a local test environment to install, setup, and test Ansible.  We will be bringing up 1 master docker container and multiple other slave containers (2 for now) that we will use to have Ansible work on them.  We will also be working on a Dockerfile that skips through the setup/configuration process in case you want to skip that and just test out Ansible scripts.
 
 ## Bring up the Docker Containers (master and slaves) -
 
@@ -41,11 +41,12 @@ Ansible Install:
 
 This step is optional, because you could just use the `hosts` file I provided located: `tomcat-standalone/hosts` and point to that in later steps.
 
-Add the following to `hosts`:
+**(Optional)** Add the following to `hosts`:
 
     [tomcat-servers]
     ans_slave0
     ans_slave1
+    ans_slave2
 
 Setup your SSH Keys:
 
@@ -77,6 +78,8 @@ Install and Configure SSH:
     cd .ssh
     apt-get install nano
     nano authorized_keys
+
+    apt-get install python
 
 Paste in the `id_rsa.pub` copied from `ans_master0`.
 From your master container you should now be able to run `ssh ans_slaveX` and connect with no password prompt.
