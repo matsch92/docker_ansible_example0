@@ -77,6 +77,7 @@ Install and Configure SSH:
     mkdir .ssh
     cd .ssh
     apt-get install nano
+    apt-get install unzip
     nano authorized_keys
 
     apt-get install python
